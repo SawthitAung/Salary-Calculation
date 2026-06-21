@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="my">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - My Salary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body
+    class="bg-gradient-to-r from-blue-100 to-indigo-200 min-h-screen p-4 md:p-10 text-gray-800"
+  >
+    <div class="max-w-5xl mx-auto">
+      <!-- Header -->
+      <header class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-indigo-900">
+          <i class="fas fa-ship mr-2"></i> Salary Dashboard
+        </h1>
+        <p class="text-gray-600">သင်၏လစာနှင့် အသုံးစရိတ် စီမံခန့်ခွဲမှုစနစ်</p>
+      </header>
+
+      <!-- Stats Section -->
+      <div class="flex flex-col gap-8 mb-8">
+        <!-- USD -->
+        <section>
+          <h2 class="text-lg font-bold mb-3 text-indigo-800">USD Summary</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-wallet mr-1"></i>Income
+              </p>
+              <p id="incomeUSD" class="font-bold text-lg">$0.00 USD</p>
+            </div>
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-home mr-1"></i>Allotment
+              </p>
+              <p id="allotUSD" class="font-bold text-lg">$0.00 USD</p>
+            </div>
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-hand-holding-usd mr-1"></i>Cash
+              </p>
+              <p id="cashUSD" class="font-bold text-lg">$0.00 USD</p>
+            </div>
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-balance-scale mr-1"></i>Net
+              </p>
+              <p id="netUSD" class="font-bold text-lg">$0.00 USD</p>
+            </div>
+          </div>
+        </section>
+        <!-- MMK -->
+        <section>
+          <h2 class="text-lg font-bold mb-3 text-indigo-800">MMK Summary</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-wallet mr-1"></i>Income
+              </p>
+              <p id="incomeMMK" class="font-bold text-lg">0 MMK</p>
+            </div>
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-home mr-1"></i>Allotment
+              </p>
+              <p id="allotMMK" class="font-bold text-lg">0 MMK</p>
+            </div>
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-hand-holding-usd mr-1"></i>Cash
+              </p>
+              <p id="cashMMK" class="font-bold text-lg">0 MMK</p>
+            </div>
+            <div
+              class="bg-white/50 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"
+            >
+              <p class="text-xs uppercase">
+                <i class="fas fa-balance-scale mr-1"></i>Net
+              </p>
+              <p id="netMMK" class="font-bold text-lg">0 MMK</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Data Table -->
+      <div
+        class="bg-white/50 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-lg overflow-x-auto mb-8"
+      >
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-indigo-900 border-b border-indigo-200">
+              <th class="p-3 text-left">Month</th>
+              <th class="p-3 text-right">Income</th>
+              <th class="p-3 text-right">Allotment</th>
+              <th class="p-3 text-right">Bound</th>
+              <th class="p-3 text-right">Cash</th>
+              <th class="p-3 text-right">Total</th>
+              <th class="p-3 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody id="salaryBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Input Section -->
+      <div
+        class="bg-white/50 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-lg mb-8"
+      >
+        <h2 class="text-lg font-bold mb-4 text-indigo-900">အသစ်ထည့်သွင်းရန်</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input
+            type="text"
+            id="month"
+            placeholder="Month"
+            class="p-3 rounded-xl border border-indigo-200"
+          />
+          <input
+            type="number"
+            id="income"
+            placeholder="Income(USD)"
+            class="p-3 rounded-xl border border-indigo-200"
+          />
+          <input
+            type="number"
+            id="alloment"
+            placeholder="Allotment(USD)"
+            class="p-3 rounded-xl border border-indigo-200"
+          />
+          <input
+            type="number"
+            id="boundStore"
+            placeholder="Boundstore(USD)"
+            class="p-3 rounded-xl border border-indigo-200"
+          />
+          <input
+            type="number"
+            id="otHours"
+            placeholder="OT Hours"
+            class="p-3 rounded-xl border border-indigo-200"
+          />
+          <input
+            type="number"
+            id="expense"
+            placeholder="Cash Advance(USD)"
+            class="p-3 rounded-xl border border-indigo-200"
+          />
+        </div>
+        <button
+          onclick="addData()"
+          class="w-full mt-4 bg-indigo-900 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition"
+        >
+          Input Data
+        </button>
+        <div class="mt-4 text-sm text-gray-600">
+          Exchange Rate: 1 USD =
+          <input
+            type="number"
+            id="rate"
+            value="4000"
+            oninput="updateDashboard()"
+            class="w-20 p-1 border rounded ml-2"
+          />
+          MMK
+        </div>
+      </div>
+
+      <button
+        onclick="clearData()"
+        class="w-full bg-red-500 text-white font-bold py-3 rounded-xl hover:bg-red-600 transition"
+      >
+        Clear All Data
+      </button>
+
+      <footer class="mt-10 text-center text-gray-500 text-xs">
+        © 2026 MSC MUNDRA VIII System | Professional Financial Tracker
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
