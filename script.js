@@ -33,11 +33,11 @@ function updateDashboard() {
   });
 
   // USD Summary Update (ID များကို index.html နှင့် ကိုက်အောင် ပြင်ထားသည်)
-  document.getElementById("incomeUSD").innerText = `$${totalIncome.toFixed(2)}`;
+  document.getElementById("incomeUSD").innerText = `$${totalIncome.toFixed(2)} USD`;
   document.getElementById("allotUSD").innerText =
-    `$${totalAllotment.toFixed(2)}`;
-  document.getElementById("cashUSD").innerText = `$${totalCash.toFixed(2)}`;
-  document.getElementById("netUSD").innerText = `$${totalNetUSD.toFixed(2)}`;
+    `$${totalAllotment.toFixed(2)} USD`;
+  document.getElementById("cashUSD").innerText = `$${totalCash.toFixed(2)} USD`;
+  document.getElementById("netUSD").innerText = `$${totalNetUSD.toFixed(2)} USD`;
 
   // MMK Summary Update
   document.getElementById("incomeMMK").innerText =
